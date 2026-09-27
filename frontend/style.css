@@ -1,0 +1,337 @@
+/* =========================
+   Base
+   ========================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #17212b;
+    color: #ffffff;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+}
+
+
+/* =========================
+   Header
+   ========================= */
+
+.contact-info {
+    display: flex;
+    justify-content: flex-end;
+    gap: 40px;
+    padding: 10px 40px 0;
+}
+
+.contact-info div {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-info strong {
+    color: #e59a3a;
+}
+
+.contact-info a,
+.contact-info span {
+    font-size: 18px;
+}
+
+
+/* =========================
+   Brand
+   ========================= */
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 0 40px;
+    margin-top: -35px;
+}
+
+.brand h1 {
+    font-size: 34px;
+}
+
+.brand h1 span {
+    color: #e59a3a;
+}
+
+
+/* =========================
+   Laptop logo
+   ========================= */
+
+.laptop-icon {
+    width: 65px;
+    flex-shrink: 0;
+}
+
+.laptop-screen {
+    width: 55px;
+    height: 36px;
+
+    border: 4px solid #e59a3a;
+    border-radius: 5px;
+}
+
+.laptop-base {
+    width: 65px;
+    height: 4px;
+
+    margin-top: 5px;
+
+    background-color: #e59a3a;
+    border-radius: 4px;
+}
+
+
+/* =========================
+   Services headline
+   ========================= */
+
+.services-line {
+    padding: 10px 40px 0;
+    font-size: 17px;
+}
+
+
+/* =========================
+   Main content
+   ========================= */
+
+.main-content {
+    display: flex;
+    align-items: flex-start;
+
+    gap: 40px;
+
+    padding: 8px 40px 10px;
+}
+
+
+/* =========================
+   Hero image
+   ========================= */
+
+.hero-image {
+    width: 68%;
+
+    height: calc(100vh - 245px);
+    min-height: 480px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   Service card
+   ========================= */
+
+.service-section {
+    flex: 1;
+
+    background-color: #243342;
+
+    padding: 28px 35px;
+
+    border-radius: 12px;
+}
+
+.service-section h2 {
+    color: #e59a3a;
+
+    font-size: 28px;
+
+    margin-bottom: 12px;
+}
+
+.service-section p {
+    margin-bottom: 18px;
+}
+
+
+/* =========================
+   Service list
+   ========================= */
+
+.service-list {
+    list-style: none;
+
+    margin-bottom: 18px;
+}
+
+.service-list li {
+    margin-bottom: 6px;
+}
+
+.service-list li::before {
+    content: "✓";
+
+    color: #e59a3a;
+
+    font-weight: bold;
+
+    margin-right: 10px;
+}
+
+
+/* =========================
+   Contact buttons
+   ========================= */
+
+.contact-buttons {
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.contact-button {
+    display: block;
+
+    padding: 14px 20px;
+
+    background-color: #e59a3a;
+    color: #17212b;
+
+    border-radius: 7px;
+
+    text-align: center;
+    text-decoration: none;
+
+    font-weight: bold;
+
+    transition:
+        transform 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.contact-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.telegram-button {
+    background-color: #229ED9;
+    color: #ffffff;
+}
+
+.telegram-button:hover {
+    background-color: #1b8fc4;
+    opacity: 1;
+}
+
+
+/* =========================
+   Footer
+   ========================= */
+
+footer {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px 40px 12px;
+
+    margin-top: 5px;
+}
+
+footer nav {
+    display: flex;
+    gap: 20px;
+}
+
+footer a {
+    color: #e59a3a;
+}
+
+
+/* =========================
+   Mobile
+   ========================= */
+
+@media (max-width: 900px) {
+
+    .contact-info {
+        justify-content: flex-start;
+
+        flex-wrap: wrap;
+
+        gap: 20px;
+
+        padding: 20px;
+    }
+
+
+    .brand {
+        padding: 10px 20px;
+
+        margin-top: 0;
+    }
+
+
+    .brand h1 {
+        font-size: 26px;
+    }
+
+
+    .brand h1 span {
+        display: block;
+    }
+
+
+    .services-line {
+        padding: 15px 20px;
+    }
+
+
+    .main-content {
+        flex-direction: column;
+
+        gap: 20px;
+
+        padding: 10px 20px 25px;
+    }
+
+
+    .hero-image {
+        width: 100%;
+
+        height: auto;
+        min-height: 0;
+
+        max-width: none;
+    }
+
+
+    .service-section {
+        width: 100%;
+    }
+
+
+    footer {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        gap: 15px;
+
+        padding: 20px;
+
+        margin-top: 0;
+    }
+}
