@@ -266,7 +266,12 @@ footer a {
 
 @media (max-width: 900px) {
 
+    .contact-info div:nth-child(2) {
+        display: none;
+    }
+
     .contact-info {
+        
         justify-content: flex-start;
 
         flex-wrap: wrap;
@@ -276,6 +281,10 @@ footer a {
         padding: 20px;
     }
 
+    .contact-button {
+    font-size: 16px;
+    padding: 12px 10px;
+    }
 
     .brand {
         padding: 10px 20px;
@@ -295,18 +304,16 @@ footer a {
 
 
     .services-line {
-        padding: 15px 20px;
+    padding-top: 5px;
+    padding-bottom: 8px;
     }
 
 
     .main-content {
-        flex-direction: column;
-
-        gap: 20px;
-
-        padding: 10px 20px 25px;
+    flex-direction: column;
+    gap: 12px;
+    padding: 5px 20px 15px;
     }
-
 
     .hero-image {
         width: 100%;
@@ -320,6 +327,7 @@ footer a {
 
     .service-section {
         width: 100%;
+        padding: 20px;
     }
 
 

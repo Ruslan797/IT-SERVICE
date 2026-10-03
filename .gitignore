@@ -63,3 +63,9 @@ Thumbs.db
 # =========================
 *.tmp
 *.temp
+
+# =========================
+# Data Transfer Tool test data
+# =========================
+test_data/
+test_destination/
