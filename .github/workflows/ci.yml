@@ -27,3 +27,6 @@ jobs:
 
       - name: Check Python syntax
         run: python -m compileall main.py tools
+
+      - name: Run tests
+        run: python -m pytest -v
