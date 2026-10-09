@@ -1,4 +1,4 @@
-from scanner import scan_folder
+from .scanner import scan_folder
 
 
 def analyze_folder(folder_path):

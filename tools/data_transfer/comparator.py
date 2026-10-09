@@ -1,5 +1,6 @@
 from pathlib import Path
-from scanner import scan_folder
+from .scanner import scan_folder
+from .verifier import calculate_hash
 
 
 def compare_folders(source_root, destination_root):
@@ -27,6 +28,8 @@ def compare_folders(source_root, destination_root):
             destination_file = destination_map[relative_path]
 
             if source_file.stat().st_size != destination_file.stat().st_size:
+                different_files.append(source_file)
+            elif calculate_hash(source_file) != calculate_hash(destination_file):
                 different_files.append(source_file)
 
     return missing_files, different_files

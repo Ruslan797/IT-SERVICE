@@ -1,9 +1,10 @@
 from pathlib import Path
-from comparator import compare_folders
-from analyzer import analyze_folder, format_size, categorize_files
-from copier import copy_file
-from verifier import verify_file
 import shutil
+
+from .comparator import compare_folders
+from .analyzer import analyze_folder, format_size, categorize_files
+from .copier import copy_file
+from .verifier import verify_file
 
 
 source_root = input("Enter source folder: ")
@@ -74,7 +75,22 @@ print(
     format_size(categories["other"]["size"])
 )
 
-files_to_copy = missing_files
+files_to_copy = missing_files + different_files
+
+if different_files:
+    print("\nWARNING")
+    print("-" * 50)
+    print(
+        len(different_files),
+        "file(s) already exist in the destination but are different."
+    )
+    print("These files will be overwritten.")
+
+    answer = input("Continue? (yes/no): ").strip().lower()
+
+    if answer != "yes":
+        print("Transfer cancelled.")
+        raise SystemExit
 
 copy_size = 0
 
@@ -100,19 +116,54 @@ if len(files_to_copy) == 0:
 answer = input("\nStart copying? (yes/no): ").strip().lower()
 
 if answer == "yes":
+    copied_count = 0
+    verified_count = 0
+    failed_count = 0
+    errors = []
+
     for file in files_to_copy:
-        destination_file = copy_file(
-            file,
-            source_root,
-            destination_root
-        )
+        try:
+            destination_file = copy_file(
+                file,
+                source_root,
+                destination_root
+            )
 
-        if verify_file(file, destination_file):
-            print("Verified:", destination_file)
-        else:
-            print("Verification failed:", destination_file)
+            copied_count += 1
 
-    print("\nTransfer completed.")
+            if verify_file(file, destination_file):
+                verified_count += 1
+                print("Verified:", destination_file)
+            else:
+                failed_count += 1
+                errors.append(
+                    f"{file} -> verification failed"
+                )
+                print("Verification failed:", destination_file)
+
+        except OSError as error:
+            failed_count += 1
+            errors.append(
+                f"{file} -> {error}"
+            )
+            print("Copy failed:", file)
+            print("Reason:", error)
+
+    print("\nTRANSFER REPORT")
+    print("-" * 50)
+    print("Missing files:", len(missing_files))
+    print("Different files:", len(different_files))
+    print("Planned:", len(files_to_copy))
+    print("Copied:", copied_count)
+    print("Verified:", verified_count)
+    print("Failed:", failed_count)
+    print("Transferred:", format_size(copy_size))
+    if errors:
+        print("\nERRORS")
+        print("-" * 50)
+
+        for error in errors:
+            print(error)
 
 else:
     print("\nTransfer cancelled.")
