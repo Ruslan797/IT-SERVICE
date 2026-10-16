@@ -11,6 +11,7 @@ from telegram.ext import (
 )
 
 from backend.api.scan import router as scan_router
+from backend.api.transfer import router as transfer_router
 
 
 # Load environment variables from .env
@@ -33,6 +34,7 @@ app = FastAPI(
 )
 
 app.include_router(scan_router)
+app.include_router(transfer_router)
 
 
 @app.get("/", tags=["System"])
