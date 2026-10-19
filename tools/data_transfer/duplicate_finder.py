@@ -46,3 +46,10 @@ def print_duplicate_report(duplicates):
     if not duplicates:
         print("No duplicates found.")
         return
+
+
+    for group_number, files in enumerate(duplicates.values(), start=1):
+        print(f"\nGroup {group_number}")
+
+        for file in files:
+            print(file)
