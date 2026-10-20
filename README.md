@@ -110,3 +110,7 @@ The `.env` file is excluded from Git and must not be committed.
 - Docker Compose
 - Nginx
 - Git
+
+## Project Status
+
+IT-Service v1.0.0 — completed.
