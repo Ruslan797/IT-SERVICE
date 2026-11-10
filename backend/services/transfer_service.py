@@ -5,7 +5,7 @@ from tools.data_transfer.copier import copy_file
 from tools.data_transfer.verifier import verify_file
 
 
-def transfer_files(source_path, destination_path):
+def transfer_files(source_path, destination_path, overwrite=False):
     source_root = Path(source_path)
     destination_root = Path(destination_path)
 
@@ -14,7 +14,13 @@ def transfer_files(source_path, destination_path):
         destination_root,
     )
 
-    files_to_copy = missing_files + different_files
+    files_to_copy = list(missing_files)
+    skipped_files = 0
+
+    if overwrite:
+        files_to_copy.extend(different_files)
+    else:
+        skipped_files = len(different_files)
 
     copied_files = 0
     verified_files = 0
@@ -43,4 +49,5 @@ def transfer_files(source_path, destination_path):
         "copied_files": copied_files,
         "verified_files": verified_files,
         "failed_files": failed_files,
+        "skipped_files": skipped_files,
     }

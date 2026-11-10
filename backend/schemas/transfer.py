@@ -11,9 +11,15 @@ class TransferRequest(BaseModel):
         description="Path to the destination directory",
     )
 
+    overwrite: bool = Field(
+        default=False,
+        description="Allow overwriting existing files with different content",
+    )
+
 
 class TransferResponse(BaseModel):
     planned_files: int
     copied_files: int
     verified_files: int
     failed_files: int
+    skipped_files: int

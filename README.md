@@ -111,6 +111,19 @@ The `.env` file is excluded from Git and must not be committed.
 - Nginx
 - Git
 
+## API Overwrite Protection
+
+The `/api/transfer` endpoint skips existing files with different
+content by default (`overwrite: false`). Missing files are copied.
+
+Set `overwrite: true` to explicitly allow replacing files with
+different content.
+
+The response includes `skipped_files`, the number of conflicting
+files skipped because overwriting was disabled.
+
+Identical files are left unchanged.
+
 ## Project Status
 
 IT-Service v1.0.0 — completed.
